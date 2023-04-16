@@ -16,11 +16,11 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import ListItemButton from '@mui/material/ListItemButton';
 import Divider from '@mui/material/Divider';
 import { makeStyles } from '@mui/styles';
+import { useAuth } from '../utils/Auth';
 
 const navItems = [
   { name: 'Home', path: '/home' },
   { name: 'Account', path: '/account' },
-  { name: 'Login', path: '/login' },
 ];
 
 export default function Navbar() {
@@ -28,6 +28,7 @@ export default function Navbar() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const drawerWidth = 240;
+  const auth = useAuth();
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -35,23 +36,6 @@ export default function Navbar() {
 
   const drawer = (
     <>
-    {/* <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center'}}>
-      <List>
-        {navItems.map((item) => (
-          <ListItem key={item.name}>
-            <ListItemText>
-              <Button 
-                component={Link}
-                to={item.path}
-                onClick={handleDrawerToggle}
-              >
-                {item.name}
-              </Button>
-            </ListItemText>
-          </ListItem>
-        ))}
-      </List>
-    </Box> */}
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
         WEB APP
@@ -66,6 +50,22 @@ export default function Navbar() {
           </ListItem>
         ))}
       </List>
+      {!auth.email ?
+      <Typography
+            variant="h7"
+            component={Link}
+            to={'/login'}
+            sx={{ 
+              my: 2, 
+              textDecoration: 'none', 
+              color: '#000000', 
+              backgroundColor: 'lightGrey', 
+              paddingX: 10.5, 
+              paddingY: 1, 
+              borderRadius: 1
+          }}>
+            Login
+          </Typography> : null}
     </Box>
     </>
   );
@@ -81,7 +81,7 @@ export default function Navbar() {
         >
           {item.name}
         </Button>
-      ))}
+))}
     </Box>
   );
 
@@ -118,6 +118,9 @@ export default function Navbar() {
             WEB APP
           </Typography>
           {isMobile ? mobileNavLinks : desktopNavLinks}
+          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+            {!auth.email ? <Button variant="contained" color="primary" style={{backgroundColor: 'white', color: '#1976d2', fontWeight: 'bold'}} component={Link} to={'/login'}>LOGIN</Button> : null}
+          </Box>
         </Toolbar>
       </AppBar>
       <Box component="nav">

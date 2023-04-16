@@ -1,10 +1,11 @@
 import React from 'react';
 import {Outlet, Navigate} from 'react-router-dom'
+import { useAuth } from './Auth';
 
 const PrivateRoute = () => {
-  let auth = {'token': false};
+  let auth = useAuth();
   return (
-    auth.token ? <Outlet /> : <Navigate to={'/unauthorized'} />
+    auth.email ? <Outlet /> : <Navigate to={'/unauthorized'} />
   )
 }
 
