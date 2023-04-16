@@ -1,8 +1,8 @@
 # Web Application
 
-This is a basic React and Material-UI 5 template for a responsive web page.
+This is a basic React and Material-UI 5 Application for a responsive web page.
 
-![Web Template Preview](https://res.cloudinary.com/dwa1chkyu/image/upload/v1681673328/Screenshot_2023-04-16_at_21.28.30_letxtn.png)
+![Web Application Preview](https://res.cloudinary.com/dwa1chkyu/image/upload/v1681673328/Screenshot_2023-04-16_at_21.28.30_letxtn.png)
 
 ## Table of Contents
 
@@ -15,7 +15,7 @@ This is a basic React and Material-UI 5 template for a responsive web page.
 
 ## Introduction
 
-This template is designed to be a starting point for web developers who need a simple, clean layout for a new project. It includes basic React components and Material-UI 5 styling with responsive design to ensure your web page looks great on all devices.
+This application is designed to be a starting point for web developers who need a simple, clean layout for a new project. It includes basic React components and Material-UI 5 styling with responsive design to ensure your web page looks great on all devices.
 
 ## Features
 
@@ -26,9 +26,9 @@ This template is designed to be a starting point for web developers who need a s
 
 ## Installation
 
-To use this template, simply clone the repository using the following command:
+To use this application, simply clone the repository using the following command:
 
-git clone https://github.com/JadeNeve/web-template.git
+git clone https://github.com/JadeNeve/web-application.git
 
 arduino
 Copy code
@@ -42,7 +42,7 @@ Copy code
 
 ## Usage
 
-To use the template, simply run the following command to start the development server:
+To use the application, simply run the following command to start the development server:
 
 npm start
 
