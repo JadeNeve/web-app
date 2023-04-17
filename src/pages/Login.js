@@ -49,7 +49,7 @@ export default function Login() {
     },
     validationSchema,
     onSubmit: (values) => {
-      auth.login(values.email, values.password);
+      auth.handleLogin(values.email, values.password);
       navigate('/home');
     },
   });

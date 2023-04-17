@@ -1,47 +1,26 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { login, logout } from './authSlice';
 
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
+  const dispatch = useDispatch();
+  const { email, password } = useSelector(state => state.auth);
 
-  useEffect(() => {
-    const storedEmail = localStorage.getItem("email");
-    const storedPassword = localStorage.getItem("password");
-    if (storedEmail && storedPassword) {
-      setEmail(storedEmail);
-      setPassword(storedPassword);
-    }
-  }, []);
-
-  const login = (email, password) => {
-    setEmail(email);
-    setPassword(password);
-    localStorage.setItem("email", email);
-    localStorage.setItem("password", password);
+  const handleLogin = (email, password) => {
+    dispatch(login({ email, password }));
   };
 
-  const logout = () => {
-    setEmail(null);
-    setPassword(null);
-    localStorage.removeItem("email");
-    localStorage.removeItem("password");
+  const handleLogout = () => {
+    dispatch(logout());
   };
 
-  if (email && password) {
-    return (
-      <AuthContext.Provider value={{ email, password, logout }}>
-        {children}
-      </AuthContext.Provider>
-    );
-  } else {
-    return (
-      <AuthContext.Provider value={{ email, password, login }}>
-        {children}
-      </AuthContext.Provider>
-    );
-  }
+  return (
+    <AuthContext.Provider value={{ email, password, handleLogin, handleLogout }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
 export const useAuth = () => {
