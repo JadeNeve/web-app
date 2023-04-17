@@ -1,27 +1,3 @@
-// import React from 'react';
-// import { useAuth } from '../utils/Auth';
-// import { useNavigate } from 'react-router-dom';
-
-// const Account = () => {
-//   const auth = useAuth();
-//   const navigate = useNavigate();
-
-//   const handleLogout = () => {
-//     auth.logout();
-//     navigate('/home');
-//   }
-//   return (
-//     <div style={{ display: "flex", justifyContent: "center", }}>
-//       <h1>ACCOUNT USER DETAILS</h1>
-//       <p>User Email: {auth.email}</p>
-//       <p>User Password: {auth.password}</p>
-
-//       <button onClick={handleLogout}>Logout</button>
-//     </div>
-//   )
-// }
-
-// export default Account
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
